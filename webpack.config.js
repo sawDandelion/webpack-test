@@ -14,6 +14,14 @@ module.exports = {
       use: [{
         loader: 'vue-loader'
       }]
+    }, {
+      test: /\.js$/,
+      enforce: 'pre',
+
+      loader: 'eslint-loader',
+      options: {
+        emitWarning: true,
+      },
     }]
   },
   mode: 'development',
