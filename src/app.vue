@@ -1,5 +1,5 @@
 <template>
-  <div>{{ text }}{{xxx}}{{test.a}}</div>
+  <div>{{ text }}</div>
 </template>
 
 <script>
