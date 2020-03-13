@@ -8,6 +8,9 @@ export default {
     return {
       text: 'abc'
     }
+  },
+  created() {
+    console.log(_.join(['a', 'b', 'c'], '~'))
   }
 }
 </script>

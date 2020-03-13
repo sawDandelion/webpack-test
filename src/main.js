@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './app.vue'
+import _ from 'loadsh'
+import $ from 'jquery'
 
 const root = document.createElement('div')
 document.body.appendChild(root)

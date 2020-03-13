@@ -6,11 +6,14 @@ const {
 } = require('clean-webpack-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
+// add-asset-html-webpack-plugin 这个插件是用来把静态资源加在你的html后面的
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+
 module.exports = {
   mode: 'development',
   entry: path.join(__dirname, 'src/main.js'),
   output: {
-    filename: `bundle-[hash].js`,
+    filename: 'bundle-[hash].js',
     path: path.join(__dirname, 'dist')
   },
   module: {
@@ -45,12 +48,23 @@ module.exports = {
       filename: 'index.html',
       template: path.join(__dirname, 'template/index.html')
     }),
+    new AddAssetHtmlPlugin({
+      filepath: path.join(__dirname, 'dll/vendor.dll.js'), // 这个路径是你的dll文件路径 
+      // includeSourcemap: false  // 这里是因为我开启了sourcemap。 不这么写会报错。
+    }),
     new VueLoaderPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         extensions: ['.js', '.vue']
       }
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      _: 'loadsh'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest: require('./dll/vendor.json')
+    })
   ]
 }
