@@ -1,16 +1,24 @@
 module.exports = {
-  root: true, // 作用的目录是根目录
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module' // 按照模块的方式解析
-  },
-  env: {
-    browser: true, // 开发环境配置表示可以使用浏览器的方法
-    node: true //
-  },
-  rules: {
-    // 自定义的规则
-    "linebreak-style": [0, "error", "windows"],
-    "indent": ['error', 2]
-  }
+    root: true,
+    env: {
+        node: true,
+    },
+    extends: ['plugin:vue/essential', '@vue/prettier'], //需要dev依赖里安装eslint-config-prettier
+    rules: {
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        //下面是核心设置，会覆盖vscode关于prettier的设置
+        'prettier/prettier': [
+            'warn',
+            {
+                semi: false,
+                singleQuote: true,
+                printWidth: 160,
+                endOfLine: 'crlf',
+            },
+        ],
+    },
+    parserOptions: {
+        parser: 'babel-eslint',
+    },
 }
