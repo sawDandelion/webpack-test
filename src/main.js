@@ -18,7 +18,7 @@ mixin.install = (vue) => {
     vue.mixin({
         data() {
             return {
-                xxx: 'xxx1';
+                xxx: 'xxx1'
             }
         }
     })
