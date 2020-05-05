@@ -1,24 +1,15 @@
 module.exports = {
     root: true,
     env: {
-        node: true,
+        node: true
     },
-    extends: ['plugin:vue/essential', '@vue/prettier'], //需要dev依赖里安装eslint-config-prettier
+    extends: ['plugin:vue/essential', '@vue/prettier'],
     rules: {
+        'prettier/prettier': 'off',
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        //下面是核心设置，会覆盖vscode关于prettier的设置
-        'prettier/prettier': [
-            'warn',
-            {
-                semi: false,
-                singleQuote: true,
-                printWidth: 160,
-                endOfLine: 'crlf',
-            },
-        ],
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
     },
     parserOptions: {
-        parser: 'babel-eslint',
-    },
+        parser: 'babel-eslint'
+    }
 }

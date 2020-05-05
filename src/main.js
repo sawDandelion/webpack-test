@@ -18,14 +18,14 @@ mixin.install = (vue) => {
     vue.mixin({
         data() {
             return {
-                xxx: 'xxx1',
+                xxx: 'xxx1'
             }
-        },
+        }
     })
 }
 
 Vue.use(mixin)
 
 new Vue({
-    render: (h) => h(App),
+    render: (h) => h(App)
 }).$mount(root)
